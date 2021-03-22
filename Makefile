@@ -5,21 +5,29 @@ SRC		=	ft_strlen.s \
 			ft_strcmp.s \
 			ft_write.s \
 			ft_read.s \
-			ft_strdup.s
+			ft_strdup.s \
+			ft_list_size_bonus.s \
+			ft_list_push_front_bonus.s \
+			ft_list_sort_bonus.s \
+			ft_list_remove_if_bonus.s \
+			ft_atoi_base_bonus.s
 
 OBJ		=	$(SRC:.s=.o)
 
 %.o		:	%.s
 			nasm -f macho64 $< -o $@
 
+all		:	$(NAME)
+
 $(NAME)	:	$(OBJ)
 			ar rcs $(NAME) $(OBJ)
 
-all		:	$(NAME)
 
 test	:	all
 			gcc -Wall -Wextra -Werror main.c libasm.a -o test
 			./test
+
+bonus	:	all
 
 clean	:	$(OBJ)
 			rm -f $(OBJ)
