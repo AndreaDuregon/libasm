@@ -3,6 +3,7 @@ segment .text
         extern _malloc
 
 _ft_list_push_front:
+		
         push    rdi             ; save head_list
         push    rsi             ; save data
         jmp     insert          ; jump to insert
@@ -27,9 +28,3 @@ swap:
 
 return:
         ret						; return
-
-fake_exit:
-		pop		rbx
-		pop     rsi             ; pop rsi
-        pop     rdi
-		ret
